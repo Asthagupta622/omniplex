@@ -8,7 +8,6 @@ export default function CheckoutButton() {
   const handleCheckout = async () => {
     const res = await fetch('/api/checkout', { method: 'POST' });
     const { id } = await res.json();
-
     const stripe = await stripePromise;
     stripe?.redirectToCheckout({ sessionId: id });
   };
